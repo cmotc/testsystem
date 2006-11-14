@@ -1,0 +1,7 @@
+# information about payloads.
+#
+
+PAYLOAD: filo-0.5.0.elf
+SOURCE:  filo 0.5.0 (svn r30)
+CONFIG:  N/A
+BUILD:   N/A

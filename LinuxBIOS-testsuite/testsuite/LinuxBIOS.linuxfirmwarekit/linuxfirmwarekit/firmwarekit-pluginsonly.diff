@@ -1,0 +1,31 @@
+Index: Makefile
+===================================================================
+--- Makefile	(revision 85)
++++ Makefile	(working copy)
+@@ -7,20 +7,24 @@
+ SUBDIRS = acpiinfo pciresource acpicompile cpufreq ethernet edd battery msrpoke pcipoke usbports tonetest bashshell mcfg lmbench  mtrr shelltools shelltests amlpoke fan fadt chk_hpet suspend thermal_trip microcode dmi
+ LIBS = dmesg.o main.o tests.o plugins.o ui.o uri.o dumpxml.o usb.o serial.o lib.o  acpitable.o e820.o
+ 
+-all: libstandalone.so biostest subdirs
++all: libstandalone.so biostest subdirs shelltests kernel
+ 
+ # if arch is i*86 (i386, i686, etc.)
+ ifeq ($(shell uname -m | cut -c1,3,4), i86)
+ LIBC = initramfs/data/usr/lib/libc.so
+ endif
+ 
+-.PHONY: subdirs $(SUBDIRS)
++.PHONY: subdirs $(SUBDIRS) shelltests kernel
+ 
+ subdirs: $(SUBDIRS)
+ 
+ $(SUBDIRS):
+ 	$(MAKE) -C $@
++
++shelltests:
+ 	cd shelltests ; make install
++
++kernel:
+ 	cd initramfs/kernel ; make
+ 
+ biostest: $(LIBS) biostest.h  .depend $(LIBC)

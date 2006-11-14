@@ -1,0 +1,127 @@
+#!/bin/bash
+
+function stamp
+{
+printf "`date \"+[%y/%m/%d %H:%M:%S] \"`"
+}
+
+NUMTESTS=`atq | wc -l`
+
+if [ "$NUMTESTS" != 0 ]; then
+  echo "`hostname`: some tests are still in progress."
+  exit 0
+fi
+
+stamp
+printf "Initializing... "
+PWD=`pwd`
+BASE=$HOME/LinuxBIOS-testsystem
+
+if [ ! -r $BASE/testsystem.config ]; then
+  printf "error: no config file found.\n"
+  exit 1
+fi
+
+source $BASE/testsystem.config
+
+TEMP=$BASE/tmp
+rm -rf $TEMP
+mkdir -p $TEMP
+cd $TEMP
+printf "ok\n"
+
+stamp
+printf "Downloading test images... "
+curl -sS -o LinuxBIOS-images.tar.bz2 "http://snapshots.linuxbios.org/deployment/scatter.php?id=$ID"
+
+if [ ! -r LinuxBIOS-images.tar.bz2 ]; then
+  printf "download failed\n"
+  cd $PWD
+  rm -rf $TEMP
+  exit 0
+fi
+
+ERROR=`grep Cowardly LinuxBIOS-images.tar.bz2`
+if [ "$ERROR" != "" ]; then
+  printf "no new images\n"
+  cd $PWD
+  rm -rf $TEMP
+  exit 0
+fi
+
+ERROR=`grep invalid\ id LinuxBIOS-images.tar.bz2`
+if [ "$ERROR" != "" ]; then
+  printf "invalid id.\n"
+  stamp
+  printf "Please contact info@coresystems.de\n"
+  cd $PWD
+  rm -rf $TEMP
+  exit 0
+fi
+
+ERROR=`grep no\ id LinuxBIOS-images.tar.bz2`
+if [ "$ERROR" != "" ]; then
+  printf "no id.\n"
+  stamp
+  printf "Please configure the test system\n"
+  cd $PWD
+  rm -rf $TEMP
+  exit 0
+fi
+
+
+printf "ok (`filesize LinuxBIOS-images.tar.bz2` bytes)\n"
+
+stamp
+printf "Updating testsuite... "
+#svn export -q svn://linuxbios.org/testsystem/LinuxBIOS-testsuite
+svn co -q svn://linuxbios.org/testsystem/LinuxBIOS-testsuite
+if [ $? == 0 ]; then
+  printf "ok\n"
+else
+  printf "FAILED\n"
+  cd $PWD
+  rm -rf $TEMP
+  exit 1
+fi
+
+stamp
+printf "Unpacking test images... "
+cd $TEMP/LinuxBIOS-testsuite/images/
+tar xjf $TEMP/LinuxBIOS-images.tar.bz2
+printf "ok\n"
+
+cd $TEMP/LinuxBIOS-testsuite
+make all-info
+make all-tests
+
+stamp
+printf "Waiting for tests to finnish..."
+# wait for tests to finish.
+while true; do
+  NUM=`atq |wc -l`
+  if [ $NUM -eq 0 ]; then
+    break
+  fi
+  sleep 60
+  printf "."
+done
+printf " ok\n"
+
+stamp
+printf "Uploading test results... "
+make all-uploads
+printf "ok\n"
+
+stamp
+printf "Cleaning up temporary files... "
+# remove all old versions
+rm -rf $TEMP-20*
+# keep a backup of the last version in
+# case something will ever go wrong
+mv $TEMP $TEMP-`date "+%Y%m%d-%H%M%S"`
+printf "ok\n"
+
+stamp
+printf "Finished after $SECONDS seconds.\n"
+

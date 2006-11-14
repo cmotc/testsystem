@@ -1,0 +1,515 @@
+0
+
+LinuxBIOS-1.1.8.0-Fallback Thu Aug 24 21:21:40 CEST 2006 starting...
+ Enabling mainboard devices
+ Enabling shadow ram
+vt8623 init starting
+Detecting Memory
+Number of Banks 04
+Number of Rows 0d
+Priamry DRAM width08
+No Columns 0a
+MA type e0
+Bank 0 (*16 Mb) 10
+No Physical Banks 02
+Total Memory (*16 Mb) 20
+CAS Supported 2 2.5 
+Cycle time at CL X     (nS)70
+Cycle time at CL X-0.5 (nS)75
+Cycle time at CL X-1   (nS)00
+Starting at CAS 2.5
+We can do CAS 2
+tRP 50
+tRCD 50
+tRAS 2d
+Low Bond 00  High Bondc5  Setting DQS delay83vt8623 done
+00:06 11 23 31 06 00 30 22 00 00 00 06 00 00 00 00 
+10:08 00 00 d0 00 00 00 00 00 00 00 00 00 00 00 00 
+20:00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+30:00 00 00 00 a0 00 00 00 00 00 00 00 00 00 00 00 
+40:00 18 88 80 82 44 00 00 18 99 88 80 82 44 00 00 
+50:c8 de cf 88 e0 07 00 00 e0 00 10 20 20 20 00 00 
+60:02 ff 00 30 d6 32 01 20 42 2d 43 58 84 55 00 00 
+70:82 48 00 01 01 08 50 00 01 00 00 00 00 00 10 10 
+80:0f 6c 00 00 80 00 00 00 02 00 00 00 00 00 00 00 
+90:00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+a0:02 c0 20 00 07 02 00 1f 04 00 00 00 2f 02 04 00 
+b0:00 00 00 00 c0 00 00 00 88 00 00 04 00 00 00 00 
+c0:01 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00 
+d0:00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+e0:00 dd 00 01 00 00 01 00 40 00 00 00 00 00 00 00 
+f0:00 00 00 00 00 00 12 13 00 00 00 00 00 00 00 00 
+AGP
+ Doing MTRR init.
+PCI: 00:00.00
+00: 06 11 23 31 06 00 30 22 00 00 00 06 00 00 00 00
+10: 08 00 00 d0 00 00 00 00 00 00 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+30: 00 00 00 00 a0 00 00 00 00 00 00 00 00 00 00 00
+40: 00 18 88 80 82 44 00 00 18 99 88 80 82 44 00 00
+50: c8 de cf 88 e0 07 00 00 e0 00 10 20 20 20 00 00
+60: 02 ff 00 30 d6 32 01 20 42 2d 43 58 84 55 00 00
+70: 82 48 00 01 01 08 50 00 01 00 00 00 00 00 10 10
+80: 0f 6d 00 00 80 00 00 00 02 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 02 c0 20 00 07 02 00 1f 04 00 00 00 2f 02 04 00
+b0: 00 00 00 00 c0 00 00 00 88 00 00 04 00 00 00 00
+c0: 01 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 dd 00 01 00 00 01 00 40 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 12 13 00 00 00 00 00 00 00 00
+PCI: 00:01.00
+00: 06 11 91 b0 07 00 30 02 00 00 04 06 00 00 01 00
+10: 00 00 00 00 00 00 00 00 00 00 00 00 f0 00 00 00
+20: 00 dc f0 dd 00 d8 f0 db 00 00 00 00 00 00 00 00
+30: 00 00 00 00 80 00 00 00 00 00 00 00 00 00 0c 00
+40: 00 08 00 22 20 72 00 00 00 00 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 01 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+PCI: 00:0a.00
+00: 80 11 76 04 00 00 10 02 82 00 07 06 00 00 82 00
+10: 00 00 00 00 dc 00 00 02 00 00 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+30: 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 07
+40: 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 01 00 a0 00 00 00 00 00 63 04 63 04 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 38 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 01 00 0a fe
+e0: 00 40 c0 24 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+PCI: 00:0a.01
+00: 80 11 76 04 00 00 10 02 82 00 07 06 00 00 82 00
+10: 00 00 00 00 dc 00 00 02 00 00 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+30: 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 07
+40: 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 01 00 a0 00 00 00 00 00 63 04 63 04 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 01 00 0a fe
+e0: 00 40 c0 24 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+PCI: 00:10.00
+00: 06 11 38 30 00 00 10 02 80 00 03 0c 00 16 80 00
+10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: e1 fc 00 00 00 00 00 00 00 00 00 00 06 11 38 30
+30: 00 00 00 00 80 00 00 00 00 00 00 00 00 01 00 00
+40: 40 10 03 00 00 00 00 00 00 0b 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 01 00 c2 ff 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 20 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00
+PCI: 00:10.01
+00: 06 11 38 30 00 00 10 02 80 00 03 0c 00 16 80 00
+10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: e1 fc 00 00 00 00 00 00 00 00 00 00 06 11 38 30
+30: 00 00 00 00 80 00 00 00 00 00 00 00 00 02 00 00
+40: 40 10 03 00 00 00 00 00 00 0b 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 01 00 c2 ff 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 20 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00
+PCI: 00:10.02
+00: 06 11 38 30 00 00 10 02 80 00 03 0c 00 16 80 00
+10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: e1 fc 00 00 00 00 00 00 00 00 00 00 06 11 38 30
+30: 00 00 00 00 80 00 00 00 00 00 00 00 00 03 00 00
+40: 40 10 03 00 00 00 00 00 00 0b 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 10 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 01 00 c2 ff 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 20 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00
+PCI: 00:10.03
+00: 06 11 04 31 00 00 10 02 82 20 03 0c 00 16 00 00
+10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 06 11 04 31
+30: 00 00 00 00 80 00 00 00 00 00 00 00 00 04 00 00
+40: 00 00 03 00 00 00 00 00 a0 20 00 09 00 00 00 00
+50: 00 5a 00 80 00 00 00 00 04 0b 88 88 53 88 00 00
+60: 20 20 01 00 00 00 00 00 01 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 01 00 c2 ff 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 88 00 00 00 00 00 00 00 00 00
+PCI: 00:11.00
+00: 06 11 77 31 07 00 10 02 00 00 01 06 00 00 80 00
+10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+30: 00 00 00 00 c0 00 00 00 00 00 00 00 00 00 00 00
+40: 00 80 00 00 00 00 00 00 0c 20 00 00 04 00 00 00
+50: 81 1f 00 00 00 00 00 00 20 00 00 01 00 00 00 00
+60: 00 00 00 00 00 00 00 04 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 20 00 00 00
+80: 00 04 50 00 00 00 00 00 01 00 00 00 00 00 00 00
+90: 00 00 61 00 80 40 00 00 10 6b 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 01 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 01 0f 09 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 1b 00 00 00 00 00 01 00 00 00
+PCI: 00:11.01
+00: 06 11 71 05 07 00 90 02 06 8a 01 01 00 00 00 00
+10: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: 01 cc 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+30: 00 00 00 00 c0 00 00 00 00 00 00 00 0e 01 00 00
+40: 13 02 00 05 08 80 c0 00 a8 a8 a8 a8 ff 00 b6 b6
+50: 07 07 07 07 0c 00 00 00 a8 a8 a8 a8 00 00 00 00
+60: 00 02 00 00 00 00 00 00 00 02 00 00 00 00 00 00
+70: 82 01 00 00 00 00 00 00 82 01 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 01 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 06 00 71 05 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 08 00 00 00 00 00 00 00 00 00
+PCI: 00:11.05
+00: 06 11 59 30 00 00 10 02 50 00 01 04 00 00 00 00
+10: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+30: 00 00 00 00 c0 00 00 00 00 00 00 00 00 03 00 00
+40: 00 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 01 00 02 06 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 01 00 02 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+PCI: 00:12.00
+00: 06 11 65 30 80 00 10 02 74 00 00 02 00 00 00 00
+10: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+20: 00 00 00 00 00 00 00 00 00 00 00 00 06 11 02 01
+30: 00 00 00 00 40 00 00 00 00 00 00 00 00 01 03 08
+40: 01 00 02 fe 00 00 00 00 00 00 00 00 00 00 00 00
+50: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02
+60: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+70: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+90: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+a0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+f0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Copying LinuxBIOS to ram.
+Jumping to LinuxBIOS.
+LinuxBIOS-1.1.8.0-Fallback Thu Aug 24 21:21:40 CEST 2006 booting...
+clocks_per_usec: 1360
+Enumerating buses...
+APIC_CLUSTER: 0 enabled
+Finding PCI configuration type.
+PCI: Using configuration type 1
+PCI_DOMAIN: 0000 enabled
+PCI: pci_scan_bus for bus 0
+PCI: 00:00.0 [1106/3123] enabled
+PCI: 00:01.0 [1106/b091] enabled
+PCI: 00:0a.0 [1180/0476] enabled
+PCI: 00:0a.1 [1180/0476] enabled
+In vt8235_enable 1106 3038.
+PCI: 00:10.0 [1106/3038] enabled
+In vt8235_enable 1106 3038.
+PCI: 00:10.1 [1106/3038] enabled
+In vt8235_enable 1106 3038.
+PCI: 00:10.2 [1106/3038] enabled
+In vt8235_enable 1106 3104.
+PCI: 00:10.3 [1106/3104] enabled
+In vt8235_enable 1106 3177.
+Initialising Devices
+PCI: 00:11.0 [1106/3177] enabled
+In vt8235_enable 1106 0571.
+PCI: 00:11.1 [1106/0571] enabled
+In vt8235_enable 1106 3059.
+PCI: 00:11.5 [1106/3059] enabled
+In vt8235_enable ffff ffff.
+In vt8235_enable 1106 3065.
+PCI: 00:12.0 [1106/3065] enabled
+PCI: pci_scan_bus for bus 1
+PCI: 01:00.0 [1106/3122] enabled
+PCI: pci_scan_bus returning with max=01
+PCI: pci_scan_bus for bus 2
+PCI: pci_scan_bus returning with max=02
+PCI: pci_scan_bus for bus 3
+PCI: pci_scan_bus returning with max=03
+vt1211 enabling PNP devices.
+PNP: 002e.0 enabled
+vt1211 enabling PNP devices.
+PNP: 002e.1 enabled
+vt1211 enabling PNP devices.
+PNP: 002e.2 enabled
+vt1211 enabling PNP devices.
+PNP: 002e.3 enabled
+vt1211 enabling PNP devices.
+PNP: 002e.b enabled
+PCI: pci_scan_bus returning with max=03
+done
+Allocating resources...
+Reading resources...
+Done reading resources.
+Setting resources...
+I would set ram size to 0x80000 Kbytes
+PCI: 00:0a.0 In set resources 
+PCI: 00:0a.0 10 <- [0x00febfb000 - 0x00febfbfff] mem
+PCI: 00:0a.0 2c <- [0x0000001870 - 0x000000286f] io
+PCI: 00:0a.0 34 <- [0x0000002870 - 0x000000386f] io
+PCI: 00:0a.0 1c <- [0x00f6bfb000 - 0x00f8bfafff] prefmem
+PCI: 00:0a.0 24 <- [0x00f8bfb000 - 0x00fabfafff] mem
+PCI: 00:0a.1 In set resources 
+PCI: 00:0a.1 1 ==> febfc000
+PCI: 00:0a.1 10 <- [0x00febfd000 - 0x00febfdfff] mem
+PCI: 00:0a.1 2c <- [0x0000003870 - 0x000000486f] io
+PCI: 00:0a.1 34 <- [0x0000004870 - 0x000000586f] io
+PCI: 00:0a.1 1c <- [0x00fabfb000 - 0x00fcbfafff] prefmem
+PCI: 00:0a.1 24 <- [0x00fcbfb000 - 0x00febfafff] mem
+PCI: 00:10.0 20 <- [0x0000001800 - 0x000000181f] io
+PCI: 00:10.1 20 <- [0x0000001820 - 0x000000183f] io
+PCI: 00:10.2 20 <- [0x0000001840 - 0x000000185f] io
+PCI: 00:10.3 10 <- [0x00febfe000 - 0x00febfe0ff] mem
+PNP: 002e.0 60 <- [0x00000003f0 - 0x00000003f7] io
+PNP: 002e.0 70 <- [0x0000000006 - 0x0000000006] irq
+PNP: 002e.0 74 <- [0x0000000002 - 0x0000000002] drq
+PNP: 002e.1 60 <- [0x0000000378 - 0x000000037f] io
+PNP: 002e.1 70 <- [0x0000000007 - 0x0000000007] irq
+PNP: 002e.1 74 <- [0x0000000003 - 0x0000000003] drq
+PNP: 002e.2 60 <- [0x00000003f8 - 0x00000003ff] io
+PNP: 002e.2 70 <- [0x0000000004 - 0x0000000004] irq
+PNP: 002e.3 60 <- [0x00000002f8 - 0x00000002ff] io
+PNP: 002e.3 70 <- [0x0000000003 - 0x0000000003] irq
+PNP: 002e.b 60 <- [0x000000ec00 - 0x000000ecff] io
+PCI: 00:11.1 20 <- [0x0000001860 - 0x000000186f] io
+PCI: 00:11.5 10 <- [0x0000001000 - 0x00000010ff] io
+PCI: 00:12.0 10 <- [0x0000001400 - 0x00000014ff] io
+PCI: 00:12.0 14 <- [0x00febff000 - 0x00febff0ff] mem
+Done setting resources.
+Done allocating resources.
+Enabling resources...
+PCI: 00:00.0 cmd <- 146
+PCI: 00:01.0 bridge ctrl <- 000f
+PCI: 00:01.0 cmd <- 147
+PCI: 01:00.0 cmd <- 140
+PCI: 00:0a.0 bridge ctrl <- 0503
+PCI: 00:0a.0 cmd <- 143
+PCI: 00:0a.1 bridge ctrl <- 0503
+PCI: 00:0a.1 cmd <- 143
+PCI: 00:10.0 subsystem <- 00/00
+PCI: 00:10.0 cmd <- 141
+PCI: 00:10.1 subsystem <- 00/00
+PCI: 00:10.1 cmd <- 141
+PCI: 00:10.2 subsystem <- 00/00
+PCI: 00:10.2 cmd <- 141
+PCI: 00:10.3 subsystem <- 00/00
+PCI: 00:10.3 cmd <- 142
+PCI: 00:11.0 cmd <- 147
+PNP: 002e.0 - enabling
+PNP: 002e.1 - enabling
+PNP: 002e.2 - enabling
+PNP: 002e.3 - enabling
+PNP: 002e.b - enabling
+PCI: 00:11.1 cmd <- 147
+PCI: 00:11.5 subsystem <- 00/00
+PCI: 00:11.5 cmd <- 141
+PCI: 00:12.0 cmd <- 1c3
+done.
+Initializing devices...
+Root Device init
+APIC_CLUSTER: 0 init
+Initializing CPU #0
+CPU: vendor Centaur device 698
+Enabling cache
+
+Setting fixed MTRRs(0-88) type: UC
+Setting fixed MTRRs(0-16) Type: WB
+Setting fixed MTRRs(24-88) Type: WB
+DONE fixed MTRRs
+Setting variable MTRR 0, base:    0MB, range:  256MB, type WB
+Setting variable MTRR 1, base:  256MB, range:  128MB, type WB
+Setting variable MTRR 2, base:  384MB, range:   64MB, type WB
+Setting variable MTRR 3, base:  448MB, range:   32MB, type WB
+DONE variable MTRRs
+Clear out the extra MTRR's
+
+MTRR check
+Fixed MTRRs   : Enabled
+Variable MTRRs: Enabled
+
+Disabling local apic...done.
+CPU #0 Initialized
+PCI: 00:10.0 init
+PCI: 00:10.1 init
+PCI: 00:10.2 init
+PCI: 00:10.3 init
+PCI: 00:11.0 init
+vt8235 init
+RTC Init
+Invalid CMOS LB checksum
+pci_routing_fixup: dev is 0000f9c0
+setting firewire
+setting usb
+Assigning IRQ 5 to 0:10.0
+  Readback = 5
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+Assigning IRQ 9 to 0:10.1
+  Readback = 9
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+Assigning IRQ 9 to 0:10.2
+  Readback = 9
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+Assigning IRQ 5 to 0:10.3
+  Readback = 5
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+setting vt8235
+Assigning IRQ 5 to 0:11.1
+  Readback = 5
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+Assigning IRQ 9 to 0:11.5
+  Readback = 9
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+setting ethernet
+Assigning IRQ 5 to 0:12.0
+  Readback = 5
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+setting vga
+Assigning IRQ 5 to 1:0.0
+  Readback = 5
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+setting pci slot
+setting cardbus slot
+Assigning IRQ 5 to 0:a.0
+  Readback = 5
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+Assigning IRQ 5 to 0:a.1
+  Readback = 5
+pci_level_irq: lower order bits are wrong: want 0x0, got 0x20
+setting riser slot
+PNP: 002e.0 init
+PNP: 002e.1 init
+PNP: 002e.2 init
+PNP: 002e.3 init
+PNP: 002e.b init
+PCI: 00:11.1 init
+Enabling VIA IDE.
+ide_init: enabling compatibility IDE addresses
+enables in reg 0x42 0x0
+enables in reg 0x42 read back as 0x0
+enables in reg 0x40 0x13
+enables in reg 0x40 read back as 0x13
+enables in reg 0x9 0x8a
+enables in reg 0x9 read back as 0x8a
+command in reg 0x4 0x7
+command in reg 0x4 reads back as 0x7
+PCI: 00:11.5 init
+PCI: 00:12.0 init
+Configuring VIA Rhine LAN
+PCI: 00:0a.0 init
+rl5c476 init
+CF Base = febfc000
+PCI: 00:0a.1 init
+rl5c476 init
+CF Base = febfc000
+CF Config = ff
+PCI: 00:00.0 init
+VT8623 random fixup ...
+Frame buffer at d0000000
+PCI: 00:01.0 init
+VT8623 AGP random fixup ...
+PCI: 01:00.0 init
+Devices initialized
+Copying IRQ routing tables to 0xf0000...done.
+Verifing copy of IRQ routing tables at 0xf0000...done
+Checking IRQ routing table consistency...
+check_pirq_routing_table() - irq_routing_table located at: 0x000f0000
+done.
+ACPI: Writing ACPI tables at f0400...
+ACPI:     * FACS
+ACPI:     * DSDT @ 000f049e Length 3f0
+ACPI:     * FADT
+ACPI: added table 1/5 Length now 40
+ACPI: done.
+Moving GDT to 0x500...ok
+Wrote linuxbios table at: 00000530 - 00000b68  checksum a22c
+
+Welcome to elfboot, the open sourced starter.
+January 2002, Eric Biederman.
+Version 1.3
+
+rom_stream: 0xfffe0000 - 0xffff0fff
+Found ELF candiate at offset 0
+Loading Etherboot version: 5.4.2
+Dropping non PT_LOAD segment
+New segment addr 0x10000 size 0x112a0 offset 0x0 filesize 0x6b00
+(cleaned up) New segment addr 0x10000 size 0x112a0 offset 0x0 filesize 0x6b00
+Loading Segment: addr: 0x000000001dfdc000 memsz: 0x000000000000c000 filesz: 0x0000000000006b00
+Clearing Segment: addr: 0x000000001dfe2b00 memsz: 0x0000000000005500
+Loading Segment: addr: 0x000000000001c000 memsz: 0x00000000000052a0 filesz: 0x0000000000000000
+Clearing Segment: addr: 0x000000000001c000 memsz: 0x00000000000052a0
+Jumping to boot code at 0x100b0
+CPU 627 Mhz
+Etherboot 5.4.2 (GPL) http://etherboot.org
+Drivers: VIA 86C100   Images: ELF   
+Protocols: DHCP TFTP 
+Relocating _text from: [000100e0,000212a0) to [1deeee40,1df00000)
+Boot from (N)etwork or (Q)uit? 
+
+Probing pci nic...
+[dlink-530tx]rhine.c v1.0.2 2004-10-29
+Enabling Sticky Bit Workaround for Chip_id: 0x3065
+IO address 1400 Ethernet Address: 00:40:63:E6:5A:55
+Analyzing Media type,this will take several seconds........OK
+Linespeed=100Mbs Fullduplex
+Searching for server (DHCP)...-
+Me: 192.168.0.201, DHCP: 192.168.0.253, TFTP: 192.168.0.253, Gateway 192.168.0.253
+No filename
+<sleep>

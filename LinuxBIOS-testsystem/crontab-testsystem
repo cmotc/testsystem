@@ -1,0 +1,2 @@
+# This entry is installed for the LinuxBIOS test system
+*/15 * * * * cd ~/LinuxBIOS-testsystem; make >> test-`hostname`.log 2>&1

@@ -1,0 +1,161 @@
+puts "Executing Chapter 1: Boot tests"
+
+startup 
+
+#
+# ###################################################
+#
+send_user "Running tests\n"
+
+set test Banner
+set timeout 25
+expect {
+    -i $console_id
+    -re "LinuxBIOS-2.*starting..."    { pass $test }
+    timeout { fail $test }
+}
+#
+# ###################################################
+set test CopyToRam
+set timeout 5
+expect {
+    -i $console_id
+    -re "Copying LinuxBIOS to ram."    { pass $test }
+    timeout { fail $test }
+}
+
+# ###################################################
+#
+set test JumpingToLB
+set timeout 5
+expect {
+    -i $console_id
+    -re "Jumping to LinuxBIOS."    { pass $test }
+    timeout { fail $test }
+}
+
+# ###################################################
+#
+set test LBinRAM
+set timeout 5
+expect {
+    -i $console_id
+    -re "LinuxBIOS-2.*booting..."    { pass $test }
+    timeout { fail $test }
+}
+# ###################################################
+#
+set test ElfBoot
+set timeout 5
+expect {
+    -i $console_id
+    -re "Welcome to elfboot, the open sourced starter."    { pass $test }
+    timeout { fail $test }
+}
+
+# ###################################################
+# 
+set timeout 15
+set test KernelBoot
+expect {
+    -i $console_id
+    -re "Linux version 2.6..*$"    { pass $test }
+    timeout { fail $test }
+}
+
+# 
+# ###################################################
+
+set timeout 15
+set test TimerInterrupt
+expect {
+    -i $console_id
+    -re "Calibrating delay" { }
+    timeout { fail $test }
+}
+
+# 
+# ###################################################
+
+# if we see the text BogoMIPS timer interrupts are working.
+expect {
+    -i $console_id
+    -re "BogoMIPS"    { pass $test }
+    timeout { fail $test }
+}
+# 
+# ###################################################
+
+set timeout 15
+set test MountingRoot
+expect {
+    -i $console_id
+    -re "Mounting root "    { pass $test }
+    timeout { fail $test }
+}
+
+# 
+# ###################################################
+
+set timeout 5
+set test Init
+expect {
+    -i $console_id
+    -re "INIT: version .* booting"    { pass $test }
+    timeout { fail $test }
+}
+
+# 
+# ###################################################
+
+set timeout 90
+set test Running
+expect {
+    -i $console_id
+    -re "login:"    { pass $test }
+    timeout { fail $test }
+}
+
+# 
+# ###################################################
+
+set timeout 10
+set test Login
+send -i $console_id "\n"
+expect {
+    -i $console_id
+    -re "login:" { send "root\n" }
+    timeout { fail $test }
+}
+expect {
+    -i $console_id
+    -re "Password:" { send "$TEST_ROOTPW\n" }
+    timeout { fail $test }
+}
+expect {
+    -i $console_id
+    -re ":~ #" { pass $test }
+    timeout { fail $test }
+}
+
+# 
+# ###################################################
+
+set test Poweroff
+
+send -i $console_id "\n"
+expect {
+    -i $console_id
+    -re ":~ #" { send "/sbin/halt\n" }
+}
+set timeout 200
+expect {
+    -i $console_id
+    -re "Power down." { pass $test }
+    timeout { fail $test }
+}
+
+# 
+# ###################################################
+
+shutdown 

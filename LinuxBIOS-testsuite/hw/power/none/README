@@ -1,0 +1,4 @@
+If there is no power line switch (ie. ips400) available, 
+you can use the ioc to trigger atx power. In this case
+set POWER_TYPE to "none" in the board config file of this
+test suite.

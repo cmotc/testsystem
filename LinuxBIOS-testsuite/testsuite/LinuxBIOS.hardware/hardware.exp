@@ -1,0 +1,150 @@
+puts "Executing Chapter 2: Hardware tests"
+
+startup
+
+#
+## ###################################################
+
+# boot to running system
+set timeout 240
+expect -i $console_id "login:"
+
+set test SimpleNetwork
+spawn $srcdir/LinuxBIOS.hardware/network.sh $TEST_IPADDR
+expect {
+	-i $spawn_id
+	-re "NETWORK FAILED" { fail $test }
+	-re "NETWORK OK"     { pass $test }
+}
+wait -i $spawn_id
+
+#
+## ###################################################
+
+# in this scenario we do 9 tests at once, and then all 
+# the analysis at once, too.
+
+load_file $srcdir/LinuxBIOS.hardware/memspeed/${VENDOR}_${DEVICE}.memspeed
+
+system scp $srcdir/LinuxBIOS.hardware/memspeed/memspeed root@$TEST_IPADDR:
+
+set bandwidth_4k    0
+set bandwidth_16k   0
+set bandwidth_32k   0
+set bandwidth_64k   0
+set bandwidth_128k  0
+set bandwidth_256k  0
+set bandwidth_512k  0
+set bandwidth_1m    0
+set bandwidth_16m   0
+
+for {set i 0} {$i<5} {incr i 1} {
+  puts "testing memory speed, loop #$i"
+  spawn ssh root@$TEST_IPADDR "nice -20 ./memspeed"
+  expect -re "Testing   4.0 KB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_4k} { 
+	  set bandwidth_4k $expect_out(1,string) 
+  }
+  expect -re "Testing  16.0 KB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_16k} { 
+	  set bandwidth_16k $expect_out(1,string) 
+  }
+  expect -re "Testing  32.0 KB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_32k} { 
+	  set bandwidth_32k $expect_out(1,string) 
+  }
+  expect -re "Testing  64.0 KB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_64k} { 
+	  set bandwidth_64k $expect_out(1,string) 
+  }
+  expect -re "Testing 128.0 KB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_128k} { 
+	  set bandwidth_128k $expect_out(1,string) 
+  }
+  expect -re "Testing 256.0 KB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_256k} { 
+	  set bandwidth_256k $expect_out(1,string) 
+  }
+  expect -re "Testing 512.0 KB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_512k} { 
+	  set bandwidth_512k $expect_out(1,string) 
+  }
+  expect -re "Testing   1.0 MB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_1m} { 
+	  set bandwidth_1m $expect_out(1,string) 
+  }
+  expect -re "Testing  16.0 MB.*seconds, (.*) MB/s"
+  if {$expect_out(1,string) > $bandwidth_16m} { 
+	  set bandwidth_16m $expect_out(1,string) 
+  }
+  close $spawn_id
+}
+
+set test MemoryBandwidth_4K
+if { $bandwidth_4k < $MINIMUM_MEM_BANDWIDTH_4K } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 4k blocks is $bandwidth_4k MB/s"
+set test MemoryBandwidth_16K
+if { $bandwidth_16k < $MINIMUM_MEM_BANDWIDTH_16K } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 16k blocks is $bandwidth_16k MB/s"
+set test MemoryBandwidth_32K
+if { $bandwidth_32k < $MINIMUM_MEM_BANDWIDTH_32K } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 32k blocks is $bandwidth_32k MB/s"
+set test MemoryBandwidth_64K
+if { $bandwidth_64k < $MINIMUM_MEM_BANDWIDTH_64K } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 64k blocks is $bandwidth_64k MB/s"
+set test MemoryBandwidth_128K
+if { $bandwidth_128k < $MINIMUM_MEM_BANDWIDTH_128K } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 128k blocks is $bandwidth_128k MB/s"
+set test MemoryBandwidth_256K
+if { $bandwidth_256k < $MINIMUM_MEM_BANDWIDTH_256K } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 256k blocks is $bandwidth_256k MB/s"
+set test MemoryBandwidth_512K
+if { $bandwidth_512k < $MINIMUM_MEM_BANDWIDTH_512K } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 512k blocks is $bandwidth_512k MB/s"
+set test MemoryBandwidth_1M
+if { $bandwidth_1m < $MINIMUM_MEM_BANDWIDTH_1M } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 1m blocks is $bandwidth_1m MB/s"
+set test MemoryBandwidth_16M
+if { $bandwidth_16m < $MINIMUM_MEM_BANDWIDTH_16M } { fail $test  } else { pass $test }
+puts "Memory bandwidth with 16m blocks is $bandwidth_16m MB/s"
+
+#
+## ###################################################
+#
+# Test CPUs
+
+system scp $srcdir/LinuxBIOS.hardware/cpus.sh root@$TEST_IPADDR:
+spawn ssh root@$TEST_IPADDR ./cpus.sh $CPUS $CLOCKRATE
+
+set test NumberOfCPUs
+
+expect { 
+	-re "CHECKNOCPUS: PASSED" { pass $test }
+	-re "CHECKNOCPUS: FAILED" { fail $test }
+}
+
+set test CPUClockRate
+expect { 
+	-re "CHECKCLOCKRATE: PASSED" { pass $test }
+	-re "CHECKCLOCKRATE: FAILED" { fail $test }
+}
+		
+
+set test PowerButton
+set timeout 200
+atxpower_softoff
+expect { 
+	-i $console_id
+	-re "Power down" { pass $test }
+	timout { fail $test }
+}
+	
+
+
+#
+## ###################################################
+
+# Shut the system down
+#
+shutdown
+

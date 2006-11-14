@@ -1,0 +1,60 @@
+LinuxBIOS testsystem
+--------------------
+
+Installation
+------------
+
+0. Check out the source tree. If you are reading this document, you might
+   have already done so:
+
+     $ svn export svn://coresystems.de/testsystem/LinuxBIOS-testsystem/
+     
+
+1. Change the ID code in testsystem.config:
+
+     ID=<YOURID>
+
+   If you don't have an ID yet, please contact info@coresystems.de
+   
+    
+
+Usage
+-----
+
+1. Starting and stopping the testsystem
+
+   The testsystem is enabled with the command 
+
+     $ make start-testsystem
+
+   This adds an appropriate cron job that polls for tests every 
+   15 minutes.
+
+   A test log will be written by the name of test-HOSTNAME.log.
+   
+   To disable the testsystem and therefore delete the crontab of
+   the test user, run
+   
+     $ make stop-testsystem
+
+   NOTE: make stop-testsystem will not kill any currently running
+   tests. 
+
+2. Starting tests manually
+
+   $ make runtests
+
+3. Show status
+
+   $ make status
+
+4. Get system into original state
+
+   $ make clean
+
+   (make sure no tests are running)
+
+
+(C) 2006 coresystems GmbH <info@coresystems.de>. All rights reserved.
+
+

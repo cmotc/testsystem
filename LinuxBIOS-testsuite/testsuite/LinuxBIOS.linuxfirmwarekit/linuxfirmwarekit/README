@@ -1,0 +1,10 @@
+This code is using the Intel Linux-ready Firmware Developer Kit 
+from http://www.linuxfirmwarekit.org/
+
+The Linux-ready Firmware Developer Kit test application is Copyright 2006 
+by Intel Corporation and is licensed under the terms of the GNU Lesser 
+General Public License version 2.1: 
+http://www.opensource.org/licenses/lgpl-license.php
+
+All other code is Copyright 2006 by coresystems GmbH
+

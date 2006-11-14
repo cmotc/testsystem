@@ -1,0 +1,56 @@
+#!/bin/bash
+
+if [ "$WORKDIR" == "" ]; then
+  WORKDIR=./tmp/LinuxBIOS-testsuite/results
+fi
+
+if [ ! -d $WORKDIR ]; then
+	echo "No tests running."
+	exit 0
+fi
+
+echo "Tests still in queue:"
+find $WORKDIR/*/* -type d | while read l; do
+	running=$l/running
+	completed=$l/completed
+	if [ ! -r $running -a ! -r $completed ]; then 
+	  printf "    "
+	  echo $l|sed s,$WORKDIR/,,
+	fi
+done
+echo
+
+echo "Completed tests:"
+find $WORKDIR/ -name "completed" | while read l; do
+	printf "    "
+	name=`echo $l|sed -e s,$WORKDIR/,, -e s,/completed,,`
+	date1=`stat $l|grep Change| cut -f2- -d\  |cut -f1 -d\.|cut -f2 -d\ `
+	site=${l/completed/site.exp}
+	date2=`stat $site|grep Change| cut -f2- -d\  |cut -f1 -d\.`
+	echo "$name (running: $date2 - $date1)"
+	printf "        "
+	UPDATE="`cat ${l/completed/run.out} | grep "FLASH FAILED"`"
+	if [ "$UPDATE" == "" ]; then
+	  printf "update: ok      "
+	else
+	  printf "update: failed  "
+	fi
+	PASSES="`cat ${l/completed/run.out} | grep "expected passes"`"
+	PASSES=$(( ${PASSES##*passes} + 0 ))
+	FAILURES="`cat ${l/completed/run.out} | grep "unexpected failures"`"
+	FAILURES=$(( ${FAILURES##*failures} + 0 ))
+	printf " tests: p=$PASSES, f=$FAILURES\n"
+done
+echo
+
+echo "Active tests:"
+find $WORKDIR/ -name "running" | while read l; do
+	printf "    "
+	name=`echo $l|sed -e s,$WORKDIR/,, -e s,/running,,`
+	date=`stat $l|grep Change| cut -f2- -d\  |cut -f1 -d\.`
+	echo "$name (since $date)"
+	
+done
+echo
+
+

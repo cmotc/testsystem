@@ -1,0 +1,52 @@
+#
+# Test System configuration file.
+#
+
+#
+# GENERIC
+#
+DEVICE=Epia-M
+VENDOR=Via
+# Number of CPUs and clock rate in MHz
+CPUS=1
+CLOCKRATE=600
+
+
+#
+# Update
+#
+
+TEST_IPADDR=192.168.0.204
+TEST_ROOTPW=coresystems
+TEST_SIZE=512
+
+#
+# Backup chip with known good bios. (The chip in the bios savior)
+# This string needs to match the output of the flashrom utility
+#
+BACKUP_CHIP=SST39SF020A
+
+#
+# POWER CONTROL
+#
+
+POWER_TYPE=ips400
+POWER_PORT=1
+POWER_IPADDR=192.168.0.248
+
+#
+# IO controller
+#
+
+IOC_TYPE=usb
+IOC_DEVICE=auto
+
+#
+# Serial console
+#
+
+CONSOLE_TYPE=serial
+CONSOLE_DEVICE=auto
+CONSOLE_SPEED=115200
+
+

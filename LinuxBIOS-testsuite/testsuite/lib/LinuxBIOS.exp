@@ -1,0 +1,219 @@
+puts "NOTICE: running testsuite/lib/LinuxBIOS.exp"
+
+#
+# IPS-400
+#
+
+proc power_off { } {
+	global port
+	global POWER
+	global verbose
+
+	puts "INFO: switching power off $port"
+
+	system $POWER off $port
+}
+
+proc power_on { } {
+	global port
+	global POWER
+	global verbose
+
+	puts "INFO: switching power on $port"
+	system $POWER on $port
+}
+
+#
+# IO switch
+#
+
+proc ioswitch_init { } {
+	global port
+	global IOC
+	global verbose
+
+	puts "INFO: ioswitch init $port"
+	system $IOC/init.sh 
+}
+
+
+proc ioswitch_exit { } {
+	global port
+	global IOC
+	global verbose
+
+	puts "INFO: ioswitch exit $port"
+	system $IOC/exit.sh 
+}
+
+
+
+#
+# ATX power button
+#
+
+proc atxpower_on { } {
+	global port
+	global IOC
+	global verbose
+
+	puts "INFO: atx power on $port"
+	system $IOC/atx-on.sh 
+}
+
+proc atxpower_off { } {
+	global port
+	global IOC
+	global verbose
+
+	puts "INFO: atx power off $port"
+	system $IOC/atx-off.sh 
+}
+
+proc atxpower_softoff { } {
+	global port
+	global IOC
+	global verbose
+
+	puts "INFO: soft atx power off $port"
+	system $IOC/atx-on.sh 
+}
+
+
+proc atxpower_restart { } {
+	global port
+	global IOC
+	global verbose
+
+	puts "INFO: atx power restart $port"
+	system $IOC/atx-restart.sh 
+}
+
+#
+# BIOS switch handling
+#
+
+proc ioswitch_newbios { } {
+	global port
+	global IOC
+	global verbose
+
+	puts "INFO: switching to development bios on $port"
+	system $IOC/bios-new.sh 
+}
+
+
+proc ioswitch_origbios { } {
+	global port
+	global IOC
+	global verbose
+
+	puts "INFO: switching to fallback bios on $port"
+	system $IOC/bios-orig.sh 
+}
+
+proc bios_recovery { } {
+	global port
+	global verbose
+		
+	ioswitch_origbios
+	atxpower_restart
+}
+
+#
+# serial console
+#
+
+proc console_connect { } {
+	global port
+	global CONSOLE
+	global CONSLOG
+	global spawn_id
+	global console_id
+	global verbose
+
+# FIXME parse port
+	puts "INFO: connecting to serial console port $port\n"
+	spawn $CONSOLE auto 115200 $CONSLOG
+	set console_id $spawn_id
+}
+
+#
+# startup and shutdown for each of the 4 nodes.
+# FIXME detect.sh should read a config file.
+#
+
+proc startup { } {
+	send_user "Initializing test environment\n"
+	ioswitch_init
+	ioswitch_newbios
+	console_connect 
+	power_on
+	sleep 1
+	atxpower_on
+	send_user "Powered on. Booting system ...\n"
+}
+
+proc shutdown { } {
+	global CONSLOG
+	send_user "Shutting down test environment\n"
+	atxpower_off 
+	power_off
+	ioswitch_exit
+	# little workaround ;-)
+	system chmod 644 $CONSLOG
+	send_user "Shutting down of test environment finished.\n"
+}
+
+proc root_login { } {
+	global console_id
+		
+	send_user "Try root login."
+	set timeout 10
+	send -i $console_id "\n"
+	expect {
+		-i $console_id
+		-re "login:" { send "root\n" }
+		timeout { puts "Error during login" }
+	}
+	expect {
+		-i $console_id
+		-re "Password:" { send "$TEST_ROOTPW\n" }
+		timeout { puts "Error during login" }
+	}
+	expect {
+		-i $console_id
+		-re ":~ #" { }
+		timeout { puts "Error during login" }
+	}
+	send_user "Login succeeded."
+}
+
+#
+# we don't do bios updates during the test (yet)
+#
+
+#proc bios_update { } {
+#	global IMAGE
+#		
+#	power_off 
+#	
+#	ioswitch_origbios
+#	
+#	power_on
+#	atxpower_on 
+#	
+#	set timeout 120
+#	expect {
+#		-re "login:"    { }
+#		timeout { fail "BIOSUPDATE" }
+#	}
+#	
+#	ioswitch_newbios
+#	system $IOC/bios-update.sh $IMAGE
+#	power_off 
+#
+#	power_on 
+#	atxpower_on 
+#}
+

@@ -1,0 +1,43 @@
+puts "Executing Chapter 2: Hardware tests"
+
+startup
+
+#
+## ###################################################
+
+# boot to running system
+set timeout 240
+expect -i $console_id "login:"
+
+spawn $srcdir/LinuxBIOS.hardware/network.sh $TEST_IPADDR
+expect {
+	-i $spawn_id
+	-re "NETWORK FAILED" { fail "Network error" }
+	-re "NETWORK OK"     {  }
+}
+wait -i $spawn_id
+
+#
+## ###################################################
+
+system scp $srcdir/LinuxBIOS.linuxfirmwarekit/linuxfirmwarekit/linuxfirmwarekit.tar.bz2 root@$TEST_IPADDR:
+system ssh root@$TEST_IPADDR rm -rf linuxfirmwarekit
+system ssh root@$TEST_IPADDR tar xvjf linuxfirmwarekit.tar.bz2
+
+set test ACPI
+# The first acpicompile fail makes the test fail.
+# if we encounter F acpicompile before any fail, the test passes.
+spawn ssh root@$TEST_IPADDR linuxfirmwarekit/run-test.sh acpicompile.exe
+expect {
+	-i $spawn_id
+	-re "R acpicompile fail" { fail $test }
+	-re "F acpicompile" { pass $test }
+}
+wait -i $spawn_id
+
+#
+## ###################################################
+
+# Shut the system down
+shutdown
+

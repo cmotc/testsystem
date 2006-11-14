@@ -1,0 +1,53 @@
+# memspeed test configuration
+# 
+# (C) 2006 coresystems GmbH
+# 
+# Minimum memory speeds for Via Epia MII 6000 
+# Memory type: 1 DIMM PC266 512MB
+# Numbers reported by Stefan Reinauer <stepan@coresystems.de>
+#
+
+#
+# ./memspeed output (in brackets: min and max value in 10 runs):
+# 
+# Testing   4.0 KB     0.62 seconds, 1281.281 MB/s (1278.711 - 1281.355 MB/s)
+# Testing  16.0 KB     0.62 seconds, 1294.021 MB/s ( 799.341 - 1294.790 MB/s)
+# Testing  32.0 KB     0.62 seconds, 1295.589 MB/s ( 917.263 - 1296.288 MB/s)
+# Testing  64.0 KB     0.72 seconds, 1114.970 MB/s ( 855.446 - 1121.932 MB/s)
+# Testing 128.0 KB     1.12 seconds,  716.940 MB/s ( 665.448 -  715.717 MB/s)
+# Testing 256.0 KB     4.59 seconds,  174.109 MB/s ( 163.929 -  174.109 MB/s)
+# Testing 512.0 KB     4.57 seconds,  175.071 MB/s ( 166.824 -  175.071 MB/s)
+# Testing   1.0 MB     4.60 seconds,  173.820 MB/s ( 170.148 -  173.820 MB/s)
+# Testing  16.0 MB     4.90 seconds,  163.128 MB/s ( 163.128 -  163.499 MB/s)
+#
+# Each test copies 800MB of data for estimating the 
+# throughput. To find out reasonable values, run the
+# test a couple of times and choose the lower end
+# of the average values.
+#
+
+#
+# Only one value per cache / memory type needs to be specified. 
+# 
+# Via C3 has 64K L1 data cache, so block sizes up to at least 32k 
+# should be running at L1 speed. With another 64K L2 cache block sizes
+# up to 128K should run at L2 speed.
+# 
+# Since the cache is not completely usable for the benchmark, 
+# 64K and 128K will be flakey in the benchmark. 
+# 
+# Clearly, with 16MB the cache influence is almost gone, so speed is
+# almost constant between tests.
+
+# NOTE: For the tests, set a variable to 0 to skip the test.
+	
+set MINIMUM_MEM_BANDWIDTH_4K        1275
+set MINIMUM_MEM_BANDWIDTH_16K       1275
+set MINIMUM_MEM_BANDWIDTH_32K       1275
+set MINIMUM_MEM_BANDWIDTH_64K        900
+set MINIMUM_MEM_BANDWIDTH_128K       665
+set MINIMUM_MEM_BANDWIDTH_256K       160
+set MINIMUM_MEM_BANDWIDTH_512K       160
+set MINIMUM_MEM_BANDWIDTH_1M         160
+set MINIMUM_MEM_BANDWIDTH_16M        160
+

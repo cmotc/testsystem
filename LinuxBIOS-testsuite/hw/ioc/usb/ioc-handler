@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# keep the ioc device open, otherwise ioc commands
+# are not permanent. This handler needs to be running
+# per ioc during the tests.
+# 
+#  start with init.sh
+#  
+#  stop with exit.sh
+# 
+
+LOC=`dirname $0`
+DEVICE=`$LOC/detect.sh $2`
+PIDFILE=$1
+
+echo $$ > $PIDFILE
+
+cat $DEVICE &>/dev/null
+
+echo "ioc-handler stopped."

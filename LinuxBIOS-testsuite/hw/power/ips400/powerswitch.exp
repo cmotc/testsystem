@@ -1,0 +1,54 @@
+#!/usr/bin/expect -f
+#
+# Copyright (c) 2006 coresystems GmbH <info@coresystems.de>.
+# All rights reserved.
+#
+#     powerswitch.exp
+#
+# Author: Stefan Reinauer <stepan@coresystems.de>
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+# BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+# ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+# Revision History:
+#
+#     2006-06-22   initial version
+
+#
+# This expect script can be used to control the internet power switch
+# IPS-400 and IPS-400-CE from WTI (http://www.wti.com/)
+#
+
+
+# hardcode these for now:
+set password "linuxbios"
+set prompt "IPS>"
+
+#set ipaddr "192.168.0.248"
+set ipaddr [lindex $argv 2]
+
+#set mode "on"
+#set mode "boot"
+#set mode "off"
+set mode [lindex $argv 0]
+
+#set switch "1"
+set switch [lindex $argv 1]
+
+set timeout -1
+log_user 0
+
+spawn telnet $ipaddr
+expect -exact "Enter Password: "
+send -- "$password\r"
+expect -exact "$prompt "
+send -- "/$mode $switch,y\r"
+expect -exact "$prompt "
+send -- "/x,y\r"
+expect eof
