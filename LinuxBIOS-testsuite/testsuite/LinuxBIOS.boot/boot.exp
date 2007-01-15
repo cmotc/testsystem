@@ -20,7 +20,7 @@ set test CopyToRam
 set timeout 5
 expect {
     -i $console_id
-    -re "Copying LinuxBIOS to ram."    { pass $test }
+    -re "Copying LinuxBIOS to RAM."    { pass $test }
     timeout { fail $test }
 }
 
